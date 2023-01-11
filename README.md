@@ -1,8 +1,3 @@
-# Hands-on Hexagonal Architecture With Spring Boot
-Code for Hands-on Hexagonal Architecture With Spring Boot Tutorial
+# exercice police assurance Spring Boot, postgresql and react js
+Code exercice police assurance with hexagonal architectural
 
-Application's architecture :
-
-![](https://cdn-images-1.medium.com/max/800/1*mBp-JAaetosptDisZe1gPg.jpeg)
-
-Full article: [Hands-on Hexagonal Architecture With Spring Boot](https://medium.com/javarevisited/hands-on-hexagonal-architecture-with-spring-boot-ca61f88bed8b)
