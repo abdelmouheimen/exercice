@@ -8,11 +8,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PoliceAssuranceDto implements Serializable {
+public class PoliceAssuranceDomain implements Serializable {
 
     private Long id;
 

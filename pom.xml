@@ -8,6 +8,15 @@
 	<artifactId>ms-library</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
+	
+	<developers>
+		<developer>
+			<name>Abdelmouheimen TRABELSSI</name>
+			<email>trabelsiabdelmouheimen@gmail.com</email>
+		</developer>
+	</developers>
+	
+	
 	<modules>
 		<module>domain</module>
 		<module>application</module>
@@ -22,16 +31,12 @@
 	</parent>
 	<properties>
 		<java.version>1.8</java.version>
-		<sonar.organization>wesleyosantos91-github</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<sonar.coverage.jacoco.xmlReportPaths>
 			${basedir}/target/site/jacoco-aggregate/jacoco.xml
 		</sonar.coverage.jacoco.xmlReportPaths>
-		<node.version>v14.18.0</node.version>
-		<yarn.version>v1.12.1</yarn.version>
-		<frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
-
 	</properties>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.reflections</groupId>

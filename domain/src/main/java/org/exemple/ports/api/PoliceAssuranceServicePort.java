@@ -3,17 +3,22 @@ package org.exemple.ports.api;
 
 import java.util.List;
 
-import org.exemple.data.PoliceAssuranceDto;
+import org.exemple.data.PoliceAssuranceDomain;
 
+/**
+ * gathers all the interfaces for everything that needs to query the domain. These interfaces are implemented by the hexagon
+ * @author Abdelmouheimen TRABELSSI
+ *
+ */
 public interface PoliceAssuranceServicePort {
 
-	PoliceAssuranceDto addPoliceAssurance(PoliceAssuranceDto policeAssuranceDto);
+	PoliceAssuranceDomain addPoliceAssurance(PoliceAssuranceDomain policeAssuranceDto);
 
     void deletePoliceAssuranceById(Long id);
 
-    PoliceAssuranceDto updatePoliceAssurance(PoliceAssuranceDto policeAssuranceDto);
+    PoliceAssuranceDomain updatePoliceAssurance(PoliceAssuranceDomain policeAssuranceDto);
 
-    List<PoliceAssuranceDto> getPoliceAssurances();
+    List<PoliceAssuranceDomain> getPoliceAssurances();
 
-    PoliceAssuranceDto getPoliceAssuranceById(Long policeAssuranceId);
+    PoliceAssuranceDomain getPoliceAssuranceById(Long policeAssuranceId);
 }

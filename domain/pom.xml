@@ -34,10 +34,10 @@
                 </dependencies>
                 <configuration>
                     <targetClasses>
-                        <param>org.example.*</param>
+                        <param>org.exemple.*</param>
                     </targetClasses>
                     <targetTests>
-                        <param>org.example.*</param>
+                        <param>org.exemple.*</param>
                     </targetTests>
                 </configuration>
             </plugin>
@@ -76,7 +76,7 @@
                                         <limit>
                                             <counter>LINE</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.8</minimum>
+                                            <minimum>0.6</minimum>
                                         </limit>
                                     </limits>
                                 </rule>

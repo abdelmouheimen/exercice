@@ -9,7 +9,7 @@ import static org.mockito.Mockito.when;
 import java.util.List;
 import java.util.Optional;
 
-import org.exemple.data.PoliceAssuranceDto;
+import org.exemple.data.PoliceAssuranceDomain;
 import org.exemple.exceptions.ResourceNotFoundException;
 import org.exemple.ports.spi.PoliceAssurancePersistencePort;
 import org.exemple.service.PoliceAssuranceServiceImpl;
@@ -42,9 +42,9 @@ public class PoliceAssuranceServiceImplTest {
     @Test
     @DisplayName("[domain] - should return a list not empty")
     void shouldReturnAListIsNotEmpty() {
-        List<PoliceAssuranceDto> policeAssurances = Fixture.from(PoliceAssuranceDto.class).gimme(1,"valid");
+        List<PoliceAssuranceDomain> policeAssurances = Fixture.from(PoliceAssuranceDomain.class).gimme(1,"valid");
         when(policeAssurancePersistencePort.getPoliceAssurances()).thenReturn(policeAssurances);
-        List<PoliceAssuranceDto> result = policeAssuranceService.getPoliceAssurances();
+        List<PoliceAssuranceDomain> result = policeAssuranceService.getPoliceAssurances();
 
         assertThat(result).isNotEmpty();
         assertThat(result.size()).isPositive();
@@ -53,10 +53,10 @@ public class PoliceAssuranceServiceImplTest {
     @Test
     @DisplayName("[domain] - should return a policeAssuranceDto with id equals 1")
     void shouldReturnAPoliceAssuranceWithIdEquals1() {
-    	PoliceAssuranceDto policeAssurance = Fixture.from(PoliceAssuranceDto.class).gimme("valid");
+    	PoliceAssuranceDomain policeAssurance = Fixture.from(PoliceAssuranceDomain.class).gimme("valid");
         when(policeAssurancePersistencePort.getPoliceAssuranceById(any())).thenReturn(Optional.of(policeAssurance));
 
-        PoliceAssuranceDto result = policeAssuranceService.getPoliceAssuranceById(1L);
+        PoliceAssuranceDomain result = policeAssuranceService.getPoliceAssuranceById(1L);
         assertThat(result.getId()).isEqualTo(1L);
     }
 
@@ -76,18 +76,18 @@ public class PoliceAssuranceServiceImplTest {
     @Test
     @DisplayName("[domain] - should created one policeAssuranceDto and return policeAssuranceDto with id 1")
     void shouldCreatedOnePoliceAssuranceAndReturnId1() {
-    	PoliceAssuranceDto policeAssurance = Fixture.from(PoliceAssuranceDto.class).gimme("valid");
+    	PoliceAssuranceDomain policeAssurance = Fixture.from(PoliceAssuranceDomain.class).gimme("valid");
         when(policeAssurancePersistencePort.addPoliceAssurance(any())).thenReturn(policeAssurance);
-        PoliceAssuranceDto result = policeAssuranceService.addPoliceAssurance(policeAssurance);
+        PoliceAssuranceDomain result = policeAssuranceService.addPoliceAssurance(policeAssurance);
         assertThat(result.getId()).isEqualTo(1L);
     }
     
     @Test
     @DisplayName("[domain] - should update nom of policeAssurance and return policeAssurance with the new nom")
     void shouldUpdateOnePoliceAssuranceAndReturnEmailChange() {
-    	PoliceAssuranceDto policeAssurance = Fixture.from(PoliceAssuranceDto.class).gimme("valid_update");
+    	PoliceAssuranceDomain policeAssurance = Fixture.from(PoliceAssuranceDomain.class).gimme("valid_update");
         when(policeAssurancePersistencePort.updatePoliceAssurance(any())).thenReturn(policeAssurance);
-        PoliceAssuranceDto result = policeAssuranceService.updatePoliceAssurance(policeAssurance);
+        PoliceAssuranceDomain result = policeAssuranceService.updatePoliceAssurance(policeAssurance);
         assertThat(result.getNom()).isEqualTo("Abdel2");
     }
     
@@ -95,7 +95,7 @@ public class PoliceAssuranceServiceImplTest {
     @DisplayName("[domain] - should delete one policeAssurance with id 1")
     void shouldDeleteOnePoliceAssuranceWithId1() {
 
-    	PoliceAssuranceDto policeAssurance = Fixture.from(PoliceAssuranceDto.class).gimme("valid");
+    	PoliceAssuranceDomain policeAssurance = Fixture.from(PoliceAssuranceDomain.class).gimme("valid");
         when(policeAssurancePersistencePort.getPoliceAssuranceById(any())).thenReturn(Optional.of(policeAssurance));
         policeAssuranceService.deletePoliceAssuranceById(1L);
         verify(policeAssurancePersistencePort, times(1)).deletePoliceAssuranceById(1L);

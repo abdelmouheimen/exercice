@@ -2,7 +2,7 @@ package application;
 
 import org.example.Application;
 import org.example.controller.PoliceAssuranceController;
-import org.exemple.data.PoliceAssuranceDto;
+import org.exemple.data.PoliceAssuranceDomain;
 import org.exemple.ports.api.PoliceAssuranceServicePort;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -70,7 +70,7 @@ public class PoliceAssuranceControllerTest {
     @DisplayName("[application] - should created one policeAssurance")
     void shouldCreatedOnePoliceAssurance() throws Exception {
 
-        PoliceAssuranceDto policeAssurance = Fixture.from(PoliceAssuranceDto.class).gimme("created");
+        PoliceAssuranceDomain policeAssurance = Fixture.from(PoliceAssuranceDomain.class).gimme("created");
 
         String jsonBody = objectMapper.writeValueAsString(policeAssurance);
 
@@ -89,7 +89,7 @@ public class PoliceAssuranceControllerTest {
     @DisplayName("[application] - should return a policeAssurance with id equals 1")
     void shouldReturnAPoliceAssuranceWithIdEquals1() throws Exception {
 
-        PoliceAssuranceDto policeAssurance = Fixture.from(PoliceAssuranceDto.class).gimme("created");
+        PoliceAssuranceDomain policeAssurance = Fixture.from(PoliceAssuranceDomain.class).gimme("created");
         when(policeAssuranceServicePort.getPoliceAssuranceById(any())).thenReturn(policeAssurance);
 
         ResultActions result =
@@ -105,7 +105,7 @@ public class PoliceAssuranceControllerTest {
     @DisplayName("[application] - should return a list is not empty")
     void shouldReturnAListIsNotEmpty() throws Exception {
 
-        List<PoliceAssuranceDto> policeAssurances = Fixture.from(PoliceAssuranceDto.class).gimme(1,"created");
+        List<PoliceAssuranceDomain> policeAssurances = Fixture.from(PoliceAssuranceDomain.class).gimme(1,"created");
         when(policeAssuranceServicePort.getPoliceAssurances()).thenReturn(policeAssurances);
 
         ResultActions result =
@@ -122,7 +122,7 @@ public class PoliceAssuranceControllerTest {
     @DisplayName("[application] - should update one policeAssurance")
     void shouldUpdateOnePoliceAssurance() throws Exception {
 
-        PoliceAssuranceDto policeAssurance = Fixture.from(PoliceAssuranceDto.class).gimme("created");
+        PoliceAssuranceDomain policeAssurance = Fixture.from(PoliceAssuranceDomain.class).gimme("created");
 
         String jsonBody = objectMapper.writeValueAsString(policeAssurance);
 
@@ -144,7 +144,7 @@ public class PoliceAssuranceControllerTest {
     @DisplayName("[application] - should delete one policeAssurance with id 1")
     void shouldDeleteOnePoliceAssuranceDtoWithId1() throws Exception {
 
-        PoliceAssuranceDto policeAssurance = Fixture.from(PoliceAssuranceDto.class).gimme("created");
+        PoliceAssuranceDomain policeAssurance = Fixture.from(PoliceAssuranceDomain.class).gimme("created");
         when(policeAssuranceServicePort.getPoliceAssuranceById(any())).thenReturn(policeAssurance);
         doNothing().when(policeAssuranceServicePort).deletePoliceAssuranceById(any());
 

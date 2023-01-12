@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.example.Application;
 import org.example.configuration.PoliceAssuranceConfig;
-import org.exemple.data.PoliceAssuranceDto;
+import org.exemple.data.PoliceAssuranceDomain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -52,9 +52,9 @@ public class PoliceAssuranceControllerIntegrationTest {
     @Test
     @DisplayName("[integration] - should created one policeAssurance")
     void shouldCreatedOnePoliceAssurance() {
-        PoliceAssuranceDto policeAssuranceRequest = Fixture.from(PoliceAssuranceDto.class).gimme("create");
-        ResponseEntity<PoliceAssuranceDto> response =
-                restTemplate.postForEntity("http://localhost:" + port + "/police-assurance", policeAssuranceRequest, PoliceAssuranceDto.class);
+        PoliceAssuranceDomain policeAssuranceRequest = Fixture.from(PoliceAssuranceDomain.class).gimme("create");
+        ResponseEntity<PoliceAssuranceDomain> response =
+                restTemplate.postForEntity("http://localhost:" + port + "/police-assurance", policeAssuranceRequest, PoliceAssuranceDomain.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
@@ -62,8 +62,8 @@ public class PoliceAssuranceControllerIntegrationTest {
     @Test
     @DisplayName("[integration] - should return a policeAssurance with id equals 1")
     void shouldReturnApoliceAssuranceWithIdEquals1() {
-        ResponseEntity<PoliceAssuranceDto> response = restTemplate.getForEntity("http://localhost:" + port + "/police-assurance/{id}", PoliceAssuranceDto.class, 1);
-        PoliceAssuranceDto policeAssuranceResponse = response.getBody();
+        ResponseEntity<PoliceAssuranceDomain> response = restTemplate.getForEntity("http://localhost:" + port + "/police-assurance/{id}", PoliceAssuranceDomain.class, 1);
+        PoliceAssuranceDomain policeAssuranceResponse = response.getBody();
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(1L, policeAssuranceResponse.getId());
     }
@@ -78,8 +78,8 @@ public class PoliceAssuranceControllerIntegrationTest {
     @Test
     @DisplayName("[integration] - should update one policeAssurance ")
     void should_update_one_policeAssurance() {
-    	PoliceAssuranceDto policeAssuranceRequest = Fixture.from(PoliceAssuranceDto.class).gimme("update");
-        ResponseEntity<PoliceAssuranceDto> response = restTemplate.exchange("http://localhost:" + port + "/police-assurance", HttpMethod.PUT, new HttpEntity<>(policeAssuranceRequest), PoliceAssuranceDto.class);
+    	PoliceAssuranceDomain policeAssuranceRequest = Fixture.from(PoliceAssuranceDomain.class).gimme("update");
+        ResponseEntity<PoliceAssuranceDomain> response = restTemplate.exchange("http://localhost:" + port + "/police-assurance", HttpMethod.PUT, new HttpEntity<>(policeAssuranceRequest), PoliceAssuranceDomain.class);
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 }

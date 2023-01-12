@@ -1,6 +1,6 @@
 package org.exemple.service;
 
-import org.exemple.data.PoliceAssuranceDto;
+import org.exemple.data.PoliceAssuranceDomain;
 import org.exemple.exceptions.ResourceNotFoundException;
 import org.exemple.ports.api.PoliceAssuranceServicePort;
 import org.exemple.ports.spi.PoliceAssurancePersistencePort;
@@ -17,7 +17,7 @@ public class PoliceAssuranceServiceImpl implements PoliceAssuranceServicePort {
     }
 
     @Override
-    public PoliceAssuranceDto addPoliceAssurance(PoliceAssuranceDto policeAssuranceDto) {
+    public PoliceAssuranceDomain addPoliceAssurance(PoliceAssuranceDomain policeAssuranceDto) {
         return policeAssurancePersistencePort.addPoliceAssurance(policeAssuranceDto);
     }
 
@@ -27,17 +27,24 @@ public class PoliceAssuranceServiceImpl implements PoliceAssuranceServicePort {
     }
 
     @Override
-    public PoliceAssuranceDto updatePoliceAssurance(PoliceAssuranceDto policeAssuranceDto) {
+    public PoliceAssuranceDomain updatePoliceAssurance(PoliceAssuranceDomain policeAssuranceDto) {
         return policeAssurancePersistencePort.updatePoliceAssurance(policeAssuranceDto);
     }
 
     @Override
-    public List<PoliceAssuranceDto> getPoliceAssurances() {
+    public List<PoliceAssuranceDomain> getPoliceAssurances() {
         return policeAssurancePersistencePort.getPoliceAssurances();
     }
 
     @Override
-    public PoliceAssuranceDto getPoliceAssuranceById(Long id) {
+    /**
+     * get PoliceAssurance by id if exists else throw ResourceNotFoundException 
+     * @param  id of police assurance
+     * @return policeAssurance
+     * @throws InterruptedException
+
+     */
+    public PoliceAssuranceDomain getPoliceAssuranceById(Long id) {
         return policeAssurancePersistencePort.getPoliceAssuranceById(id)
         		.orElseThrow(() -> new ResourceNotFoundException(format("Not found police with code {0}", id)));
     }

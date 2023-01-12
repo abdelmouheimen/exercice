@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.example.entity.PoliceAssurance;
 import org.example.mappers.PoliceAssuranceMapper;
 import org.example.repository.PoliceAssuranceRepository;
-import org.exemple.data.PoliceAssuranceDto;
+import org.exemple.data.PoliceAssuranceDomain;
 import org.exemple.exceptions.ResourceNotFoundException;
 import org.exemple.ports.spi.PoliceAssurancePersistencePort;
 import org.springframework.context.annotation.Primary;
@@ -25,7 +25,7 @@ public class PoliceAssuranceJpaAdapter implements PoliceAssurancePersistencePort
 	}
 
 	@Override
-	public PoliceAssuranceDto addPoliceAssurance(PoliceAssuranceDto PoliceAssuranceDto) {
+	public PoliceAssuranceDomain addPoliceAssurance(PoliceAssuranceDomain PoliceAssuranceDto) {
 
 		PoliceAssurance PoliceAssurance = PoliceAssuranceMapper.INSTANCE
 				.policeAssuranceDtoToPoliceAssurance(PoliceAssuranceDto);
@@ -41,7 +41,7 @@ public class PoliceAssuranceJpaAdapter implements PoliceAssurancePersistencePort
 	}
 
 	@Override
-	public PoliceAssuranceDto updatePoliceAssurance(PoliceAssuranceDto PoliceAssuranceDto) {
+	public PoliceAssuranceDomain updatePoliceAssurance(PoliceAssuranceDomain PoliceAssuranceDto) {
 		PoliceAssurance PoliceAssurance = PoliceAssuranceMapper.INSTANCE
 				.policeAssuranceDtoToPoliceAssurance(PoliceAssuranceDto);
 		PoliceAssurance PoliceAssuranceUpdated = PoliceAssuranceRepository.save(PoliceAssurance);
@@ -51,7 +51,7 @@ public class PoliceAssuranceJpaAdapter implements PoliceAssurancePersistencePort
 	}
 
 	@Override
-	public List<PoliceAssuranceDto> getPoliceAssurances() {
+	public List<PoliceAssuranceDomain> getPoliceAssurances() {
 
 		List<PoliceAssurance> PoliceAssuranceList = PoliceAssuranceRepository.findAll();
 
@@ -59,7 +59,7 @@ public class PoliceAssuranceJpaAdapter implements PoliceAssurancePersistencePort
 	}
 
 	@Override
-	public Optional<PoliceAssuranceDto> getPoliceAssuranceById(Long PoliceAssuranceId) {
+	public Optional<PoliceAssuranceDomain> getPoliceAssuranceById(Long PoliceAssuranceId) {
 
 		PoliceAssurance PoliceAssurance = PoliceAssuranceRepository.findById(PoliceAssuranceId)
 				.orElseThrow(() -> new ResourceNotFoundException(

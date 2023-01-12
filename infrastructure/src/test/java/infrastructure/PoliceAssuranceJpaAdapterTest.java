@@ -8,7 +8,7 @@ import java.util.Optional;
 import org.example.Application;
 import org.example.adapters.PoliceAssuranceJpaAdapter;
 import org.example.repository.PoliceAssuranceRepository;
-import org.exemple.data.PoliceAssuranceDto;
+import org.exemple.data.PoliceAssuranceDomain;
 import org.exemple.exceptions.ResourceNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -46,7 +46,7 @@ public class PoliceAssuranceJpaAdapterTest {
     @Test
     @DisplayName("[infrastructure] - should return a list not empty")
     void shouldReturnAPageIsNotEmpty() {
-        List<PoliceAssuranceDto> result = adapter.getPoliceAssurances();
+        List<PoliceAssuranceDomain> result = adapter.getPoliceAssurances();
         assertThat(result).isNotEmpty();
         assertThat(result.size()).isPositive();
     }
@@ -54,8 +54,8 @@ public class PoliceAssuranceJpaAdapterTest {
     @Test
     @DisplayName("[infrastructure] - should return a policeAssurance with id equals 1")
     void shouldReturnAPersonAssuranceDtoWithIdEquals1() {
-        Optional<PoliceAssuranceDto> policeAssuranceOptional = adapter.getPoliceAssuranceById(1L);
-        PoliceAssuranceDto result = policeAssuranceOptional.get();
+        Optional<PoliceAssuranceDomain> policeAssuranceOptional = adapter.getPoliceAssuranceById(1L);
+        PoliceAssuranceDomain result = policeAssuranceOptional.get();
         assertThat(result.getId()).isEqualTo(1L);
 
     }
@@ -64,16 +64,16 @@ public class PoliceAssuranceJpaAdapterTest {
     @Test
     @DisplayName("[infrastructure] - should created one policeAssurance and return id 1")
     void shouldCreatedOnePersonAssuranceDtoAndReturnId1() {
-    	PoliceAssuranceDto policeAssurance = Fixture.from(PoliceAssuranceDto.class).gimme("create");
-    	PoliceAssuranceDto result = adapter.addPoliceAssurance(policeAssurance);
+    	PoliceAssuranceDomain policeAssurance = Fixture.from(PoliceAssuranceDomain.class).gimme("create");
+    	PoliceAssuranceDomain result = adapter.addPoliceAssurance(policeAssurance);
         assertThat(result.getId()).isEqualTo(2L);
     }
 
     @Test
     @DisplayName("[infrastructure] - should update nom of policeAssurance and return policeAssurance with new nom")
     void shouldUpdateOnePersonAssuranceDto() {
-    	PoliceAssuranceDto policeAssurance = Fixture.from(PoliceAssuranceDto.class).gimme("update");
-    	PoliceAssuranceDto result = adapter.updatePoliceAssurance(policeAssurance);
+    	PoliceAssuranceDomain policeAssurance = Fixture.from(PoliceAssuranceDomain.class).gimme("update");
+    	PoliceAssuranceDomain result = adapter.updatePoliceAssurance(policeAssurance);
         assertThat(result.getNom()).isEqualTo("Abdel2");
     }
 

@@ -4,18 +4,24 @@ package org.exemple.ports.spi;
 import java.util.List;
 import java.util.Optional;
 
-import org.exemple.data.PoliceAssuranceDto;
+import org.exemple.data.PoliceAssuranceDomain;
 
+/**
+ * gathers all the interfaces required by the domain to retrieve information from third parties.<br/>
+ * These interfaces are defined in the hexagon and implemented by the right side of the infrastructure.
+ * @author Abdelmouheimen TRABELSSI
+ *
+ */
 public interface PoliceAssurancePersistencePort {
 
-	PoliceAssuranceDto addPoliceAssurance(PoliceAssuranceDto policeAssuranceDto);
+	PoliceAssuranceDomain addPoliceAssurance(PoliceAssuranceDomain policeAssuranceDto);
 
     void deletePoliceAssuranceById(Long id);
 
-    PoliceAssuranceDto updatePoliceAssurance(PoliceAssuranceDto policeAssuranceDto);
+    PoliceAssuranceDomain updatePoliceAssurance(PoliceAssuranceDomain policeAssuranceDto);
 
-    List<PoliceAssuranceDto> getPoliceAssurances();
+    List<PoliceAssuranceDomain> getPoliceAssurances();
 
-    Optional<PoliceAssuranceDto> getPoliceAssuranceById(Long Id);
+    Optional<PoliceAssuranceDomain> getPoliceAssuranceById(Long Id);
 
 }
